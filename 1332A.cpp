@@ -1,0 +1,85 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int tt,i,a,b,c,d,x,y,x1,y1,x2,y2,e,f,t,g,k,l,flag,flag1;
+    cin>>tt;
+    for(i=1;i<=tt;i++)
+    {
+        flag=0;
+        flag1=0;
+        cin>>a>>b>>c>>d;
+        cin>>x>>y>>x1>>y1>>x2>>y2;
+        t=min(a,b);
+        g=min(c,d);
+        if(a>b)
+        {
+            e=a-b;
+            x-=e;
+        }
+        else
+        {
+            e=b-a;
+            x+=e;
+        }
+        if(c>d)
+        {
+            f=c-d;
+            y-=f;
+        }
+        else
+        {
+            f=d-c;
+            y+=f;
+        }
+        if(t>0)
+        {
+           k=x-1,
+           l=y;
+           if(k>=x1&&k<=x2&&l>=y1&&l<=y2)
+           {
+              flag=1;
+           }
+           k=x+1;
+           l=y;
+           if(k>=x1&&k<=x2&&l>=y1&&l<=y2)
+           {
+              flag=1;
+           }
+        }
+        else
+        {
+            flag=1;
+        }
+        if(g>0)
+        {
+            k=x;
+            l=y-1;
+           if(k>=x1&&k<=x2&&l>=y1&&l<=y2)
+           {
+              flag1=1;
+           }
+           k=x;
+           l=y+1;
+           if(k>=x1&&k<=x2&&l>=y1&&l<=y2)
+           {
+              flag1=1;
+           }
+        }
+        else
+        {
+            flag1=1;
+        }
+        if(x>=x1&&x<=x2&&y>=y1&&y<=y2&&flag&&flag1)
+        {
+            cout<<"Yes\n";
+        }
+        else
+        {
+            cout<<"No\n";
+        }
+    }
+
+}

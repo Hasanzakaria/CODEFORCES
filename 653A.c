@@ -1,0 +1,46 @@
+#include<stdio.h>
+int main ()
+{
+    int a,b[50],i,j,temp,k,r=0,count,flag=1;
+    scanf("%d",&a);
+    for(i=0;i<a;i++)
+    {
+        scanf("%d",&b[i]);
+    }
+    for(i=0;i<a-1;i++)
+    {
+        for(j=0;j<a-1;j++)
+        {
+            if(b[j]>b[j+1])
+            {
+                temp=b[j];
+                b[j]=b[j+1];
+                b[j+1]=temp;
+            }
+        }
+    }
+    for(i=0;i<a-2;i++)
+    {
+        r=0;
+        count=1;
+        for(j=i+1;j<a;j++)
+        {
+          k=b[j]-b[i];
+          if(k<=2&&k>0&&r!=k)
+          {
+            count++;
+            r=k;
+          }
+        }
+        if(count>=3)
+        {
+            printf("YES");
+            flag=0;
+            break;
+        }
+    }
+    if(flag==1)
+    {
+        printf("NO");
+    }
+}

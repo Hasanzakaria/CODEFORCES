@@ -1,0 +1,278 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<string>v,r;
+vector<long long int>reversee;
+map<string,long long int>mp,cp;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int t,i,sizee,j,flag1,flag2,check,u,f,a,x,y,z;
+    string c,m;
+    cin>>t;
+    for(i=1; i<=t; i++)
+    {
+        flag1=0;
+        flag2=0;
+        check=0;
+        cin>>a;
+        for(j=1; j<=a; j++)
+        {
+            cin>>c;
+            sizee=c.size();
+            if(c[0]=='0'&&c[sizee-1]=='0')
+            {
+                flag1=1;
+            }
+            else if(c[0]=='1'&&c[sizee-1]=='1')
+            {
+                flag2=1;
+            }
+            else if(c[0]=='0'&&c[sizee-1]=='1')
+            {
+                v.push_back(c);
+            }
+            else
+            {
+                r.push_back(c);
+            }
+            mp[c]=1;
+            cp[c]=j;
+        }
+        if(flag1==1&&flag2==1)
+        {
+            x=v.size();
+            y=r.size();
+            if(x==0&&y==0)
+            {
+                check=1;
+            }
+            else
+            {
+                u=abs(x-y);
+                if(v.size()>r.size())
+                {
+                    f=u/2;
+                    for(j=0; j<v.size(); j++)
+                    {
+                        if(reversee.size()==f)
+                        {
+                            break;
+                        }
+                        m=v[j];
+                        mp[m]--;
+                        reverse(m.begin(),m.end());
+                        if(mp[m]==0)
+                        {
+                            reversee.push_back(cp[v[j]]);
+                            mp[m]++;
+                        }
+                        else
+                        {
+                            mp[v[j]]=1;
+                        }
+                    }
+                }
+                else
+                {
+                    f=u/2;
+                    for(j=0; j<r.size(); j++)
+                    {
+                        if(reversee.size()==f)
+                        {
+                            break;
+                        }
+                        m=r[j];
+                        mp[m]--;
+                        reverse(m.begin(),m.end());
+                        if(mp[m]==0)
+                        {
+                            reversee.push_back(cp[r[j]]);
+                            mp[m]++;
+                        }
+                        else
+                        {
+                            mp[r[j]]=1;
+                        }
+                    }
+                }
+            }
+        }
+        else if(flag1==1)
+        {
+            x=v.size();
+            y=r.size();
+            u=abs(x-y);
+            if(v.size()>r.size())
+            {
+                f=u/2;
+                for(j=0; j<v.size(); j++)
+                {
+                    if(reversee.size()==f)
+                    {
+                        break;
+                    }
+                    m=v[j];
+                    mp[m]--;
+                    reverse(m.begin(),m.end());
+                    if(mp[m]==0)
+                    {
+                        reversee.push_back(cp[v[j]]);
+                        mp[m]++;
+                    }
+                    else
+                    {
+                        mp[v[j]]=1;
+                    }
+                }
+            }
+            else
+            {
+                f=u/2;
+                for(j=0; j<r.size(); j++)
+                {
+                    if(reversee.size()==f)
+                    {
+                        break;
+                    }
+                    m=r[j];
+                    mp[m]--;
+                    reverse(m.begin(),m.end());
+                    if(mp[m]==0)
+                    {
+                        reversee.push_back(cp[r[j]]);
+                        mp[m]++;
+                    }
+                    else
+                    {
+                        mp[r[j]]=1;
+                    }
+                }
+            }
+
+        }
+        else if(flag2==1)
+        {
+            x=v.size();
+            y=r.size();
+            u=abs(x-y);
+            if(v.size()>r.size())
+            {
+                f=u/2;
+                for(j=0; j<v.size(); j++)
+                {
+                    if(reversee.size()==f)
+                    {
+                        break;
+                    }
+                    m=v[j];
+                    mp[m]--;
+                    reverse(m.begin(),m.end());
+                    if(mp[m]==0)
+                    {
+                        reversee.push_back(cp[v[j]]);
+                        mp[m]++;
+                    }
+                    else
+                    {
+                        mp[v[j]]=1;
+                    }
+                }
+            }
+            else
+            {
+                f=u/2;
+                for(j=0; j<r.size(); j++)
+                {
+                    if(reversee.size()==f)
+                    {
+                        break;
+                    }
+                    m=r[j];
+                    mp[m]--;
+                    reverse(m.begin(),m.end());
+                    if(mp[m]==0)
+                    {
+                        reversee.push_back(cp[r[j]]);
+                        mp[m]++;
+                    }
+                    else
+                    {
+                        mp[r[j]]=1;
+                    }
+                }
+            }
+
+        }
+        else
+        {
+            x=v.size();
+            y=r.size();
+            u=abs(x-y);
+            if(v.size()>r.size())
+            {
+                f=u/2;
+                for(j=0; j<v.size(); j++)
+                {
+                    if(reversee.size()==f)
+                    {
+                        break;
+                    }
+                    m=v[j];
+                    mp[m]--;
+                    reverse(m.begin(),m.end());
+                    if(mp[m]==0)
+                    {
+                        reversee.push_back(cp[v[j]]);
+                        mp[m]++;
+                    }
+                    else
+                    {
+                        mp[v[j]]=1;
+                    }
+                }
+            }
+            else
+            {
+                f=u/2;
+                for(j=0; j<r.size(); j++)
+                {
+                    if(reversee.size()==f)
+                    {
+                        break;
+                    }
+                    m=r[j];
+                    mp[m]--;
+                    reverse(m.begin(),m.end());
+                    if(mp[m]==0)
+                    {
+                        reversee.push_back(cp[r[j]]);
+                        mp[m]++;
+                    }
+                    else
+                    {
+                        mp[r[j]]=1;
+                    }
+                }
+            }
+        }
+        if(check)
+        {
+            cout<<-1<<"\n";
+        }
+        else
+        {
+            cout<<reversee.size()<<"\n";
+            for(j=0; j<reversee.size(); j++)
+            {
+                cout<<reversee[j]<<" ";
+            }
+            cout<<"\n";
+        }
+        mp.clear();
+        v.clear();
+        r.clear();
+        cp.clear();
+        reversee.clear();
+    }
+}

@@ -1,0 +1,102 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int t,i,j,k;
+    cin>>t;
+    for(i=1;i<=t;i++)
+    {
+        char ch[9][9];
+        for(j=0;j<9;j++)
+        {
+            for(k=0;k<9;k++)
+            {
+                cin>>ch[j][k];
+            }
+        }
+        if(ch[0][0]=='9')
+        {
+            ch[0][0]='1';
+        }
+        else
+        {
+            ch[0][0]++;
+        }
+        if(ch[3][1]=='9')
+        {
+            ch[3][1]='1';
+        }
+        else
+        {
+            ch[3][1]++;
+        }
+        if(ch[6][2]=='9')
+        {
+            ch[6][2]='1';
+        }
+        else
+        {
+            ch[6][2]++;
+        }
+        if(ch[1][3]=='9')
+        {
+            ch[1][3]='1';
+        }
+        else
+        {
+            ch[1][3]++;
+        }
+        if(ch[4][4]=='9')
+        {
+            ch[4][4]='1';
+        }
+        else
+        {
+            ch[4][4]++;
+        }
+        if(ch[7][5]=='9')
+        {
+            ch[7][5]='1';
+        }
+        else
+        {
+            ch[7][5]++;
+        }
+        if(ch[2][6]=='9')
+        {
+            ch[2][6]='1';
+        }
+        else
+        {
+            ch[2][6]++;
+        }
+        if(ch[5][7]=='9')
+        {
+            ch[5][7]='1';
+        }
+        else
+        {
+            ch[5][7]++;
+        }
+        if(ch[8][8]=='9')
+        {
+            ch[8][8]='1';
+        }
+        else
+        {
+            ch[8][8]++;
+        }
+        for(j=0;j<9;j++)
+        {
+            for(k=0;k<9;k++)
+            {
+                cout<<ch[j][k];
+            }
+            cout<<"\n";
+        }
+    }
+
+
+}

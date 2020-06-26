@@ -1,0 +1,115 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    long long int t,i,a,b,c,j,k,cou,anss,total,value;
+    char ch;
+    cin>>t;
+    for(i=1;i<=t;i++)
+    {
+        cin>>a>>b>>c;
+        cou=0;
+        char jak[a][b],ans[a][b];
+        for(j=0;j<a;j++)
+        {
+            for(k=0;k<b;k++)
+            {
+                cin>>jak[j][k];
+                if(jak[j][k]=='R')
+                {
+                   cou++;
+                }
+            }
+        }
+        anss=cou/c;
+        total=cou%c;
+        j=0;
+        k=0;
+        ch='a';
+        if(total)
+        {
+            value=anss+1;
+            total--;
+        }
+        else
+        {
+            value=anss;
+        }
+        while(j>=0&&j<a&&k>=0&&k<b)
+        {
+            if(jak[j][k]=='.')
+            {
+                ans[j][k]=ch;
+            }
+            else
+            {
+                ans[j][k]=ch;
+                value--;
+                if(value==0)
+                {
+                    c--;
+                    if(total)
+                    {
+                        value=anss+1;
+                        total--;
+                        if(ch=='z'&&c!=0)
+                        {
+                            ch='A';
+                        }
+                        else if(ch=='Z'&c!=0)
+                        {
+                            ch='0';
+                        }
+                        else if(c!=0)
+                        {
+                            ch++;
+                        }
+                    }
+                    else
+                    {
+                        value=anss;
+                        if(ch=='z'&&c!=0)
+                        {
+                            ch='A';
+                        }
+                        else if(ch=='Z'&c!=0)
+                        {
+                            ch='0';
+                        }
+                        else if(c!=0)
+                        {
+                            ch++;
+                        }
+                    }
+                }
+            }
+            if(j%2==0)
+            {
+                k++;
+            }
+            else
+            {
+                k--;
+            }
+            if(k==b)
+            {
+                k--;
+                j++;
+            }
+            if(k==-1)
+            {
+                k++;
+                j++;
+            }
+        }
+        for(j=0;j<a;j++)
+        {
+            for(k=0;k<b;k++)
+            {
+                cout<<ans[j][k];
+            }
+            cout<<"\n";
+        }
+    }
+
+}

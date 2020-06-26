@@ -1,0 +1,79 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    long long int n,i,a,b,c,d,k,r,rr,kk,t,tt;
+    cin>>n;
+    for(i=1;i<=n;i++)
+    {
+        cin>>a>>b>>c>>d;
+        k=b-c;
+        if(k<0)
+        {
+            k=-k;
+        }
+        if(k%d==0)
+        {
+            cout<<k/d<<endl;
+        }
+        else
+        {
+          r=1-b;
+          if(r<0)
+          {
+              r=-r;
+          }
+          k=r/d;
+          if(r%d!=0)
+          {
+              k++;
+          }
+          rr=a-b;
+          if(rr<0)
+          {
+              rr=-rr;
+          }
+          kk=rr/d;
+          if(rr%d!=0)
+          {
+              kk++;
+          }
+          t=1-c;
+          if(t<0)
+          {
+              t=-t;
+          }
+          if(t%d==0)
+          {
+              k+=(t/d);
+          }
+          else
+          {
+              k=10000000000;
+          }
+          tt=a-c;
+          if(tt<0)
+          {
+              tt=-tt;
+          }
+          if(tt%d==0)
+          {
+              kk+=(tt/d);
+          }
+          else
+          {
+              kk=10000000000;
+          }
+          if(k==10000000000&&kk==10000000000)
+          {
+              cout<<-1<<endl;
+          }
+          else
+          {
+              cout<<min(k,kk)<<endl;
+          }
+        }
+    }
+
+}

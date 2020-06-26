@@ -1,0 +1,106 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    long long int n,m,i,a,b,r,even,odd,x,even1,odd1;
+    cin>>n>>m;
+    for(i=1; i<=m; i++)
+    {
+        cin>>a>>b;
+        if((n%2)!=0)
+        {
+            if((a+b)%2==0)
+            {
+                r=a-1;
+                even=r/2;
+                odd=r/2;
+                if(r%2!=0)
+                {
+                    even++;
+                }
+                even1=n/2;
+                x=(even*(even1+1))+(odd*even1);
+                if(a%2==0)
+                {
+                    x+=(b/2);
+                }
+                else
+                {
+                    x+=(b/2)+1;
+                }
+                cout<<x<<endl;
+            }
+            else
+            {
+                r=a-1;
+                even=r/2;
+                odd=r/2;
+                if(r%2!=0)
+                {
+                    even++;
+                }
+                even1=n/2;
+                x=(even*even1)+odd*(even1+1);
+                if(a%2==0)
+                {
+                    x+=(b/2)+1;
+                }
+                else
+                {
+                    x+=(b/2);
+                }
+                cout<<x+((n*n)/2)+1<<endl;
+            }
+
+        }
+        else
+        {
+            if((a+b)%2==0)
+            {
+                r=a-1;
+                even=r/2;
+                odd=r/2;
+                if(r%2!=0)
+                {
+                    even++;
+                }
+                even1=n/2;
+                x=(even*even1)+(odd*even1);
+                if(a%2==0)
+                {
+                    x+=(b/2);
+                }
+                else
+                {
+                    x+=(b/2)+1;
+                }
+                cout<<x<<endl;
+            }
+            else
+            {
+                r=a-1;
+                even=r/2;
+                odd=r/2;
+                if(r%2!=0)
+                {
+                    even++;
+                }
+                even1=n/2;
+                x=(even*even1)+(odd*even1);
+                if(a%2==0)
+                {
+                    x+=(b/2)+1;
+                }
+                else
+                {
+                    x+=(b/2);
+                }
+                cout<<x+((n*n)/2)<<endl;
+            }
+
+        }
+    }
+
+
+}

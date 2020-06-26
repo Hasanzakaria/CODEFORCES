@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int n,m,i,j,temp,flag=0;
+    cin>>n>>m;
+    int ara[n][m],jak[n][m];
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m;j++)
+        {
+            cin>>ara[i][j];
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m;j++)
+        {
+            cin>>jak[i][j];
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m;j++)
+        {
+            if(ara[i][j]>jak[i][j])
+            {
+               temp=ara[i][j];
+               ara[i][j]=jak[i][j];
+               jak[i][j]=temp;
+            }
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m-1;j++)
+        {
+            if(ara[i][j+1]<=ara[i][j]||jak[i][j+1]<=jak[i][j])
+            {
+               flag=1;
+            }
+        }
+    }
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n-1;j++)
+        {
+            if(ara[j+1][i]<=ara[j][i]||jak[j+1][i]<=jak[j][i])
+            {
+                flag=1;
+            }
+        }
+    }
+    if(flag==0)
+    {
+        cout<<"Possible\n";
+    }
+    else
+    {
+        cout<<"Impossible\n";
+    }
+}

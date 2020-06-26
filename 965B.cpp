@@ -1,0 +1,89 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long int ara[100][100];
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    long long int n,k,i,j,r,flag,maxx=0,s,d,l;
+    cin>>n>>k;
+    char ch[n][n];
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            cin>>ch[i][j];
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            flag=0;
+            l=j+k-1;
+            if(ch[i][j]=='.'&&l<n)
+            {
+                for(r=0;r<k;r++)
+                {
+                    if(ch[i][j+r]=='#')
+                    {
+                       flag=1;
+                       break;
+                    }
+                }
+                if(flag==0)
+                {
+                    for(r=0;r<k;r++)
+                    {
+                       ara[i][j+r]++;
+                    }
+                }
+            }
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            flag=0;
+            l=j+k-1;
+            if(ch[j][i]=='.'&&l<n)
+            {
+                for(r=0;r<k;r++)
+                {
+                    if(ch[j+r][i]=='#')
+                    {
+                       flag=1;
+                       break;
+                    }
+                }
+                if(flag==0)
+                {
+                    for(r=0;r<k;r++)
+                    {
+                       ara[j+r][i]++;
+                    }
+                }
+            }
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+           maxx=max(maxx,ara[i][j]);
+           if(maxx==ara[i][j])
+           {
+               s=i;
+               d=j;
+           }
+        }
+    }
+    if(maxx==0)
+    {
+        cout<<1<<" "<<1<<endl;
+    }
+    else
+    {
+        cout<<s+1<<" "<<d+1<<endl;
+    }
+}

@@ -1,0 +1,142 @@
+#include<bits/stdc++.h>
+using namespace std;
+multiset<long long int>p,r,u;
+multiset<long long int>::iterator g,o;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int n,i,left=0,right=0,x,ans=0,f=0,cou=0;
+    string s;
+    cin>>n;
+    pair<string,long long int>pq[n];
+    for(i=1; i<=n; i++)
+    {
+        cin>>pq[i-1].first>>pq[i-1].second;
+        s=pq[i-1].first;
+        if(s[0]=='1')
+        {
+            p.insert(pq[i-1].second);
+            left++;
+        }
+        if(s[1]=='1')
+        {
+            r.insert(pq[i-1].second);
+            right++;
+        }
+        u.insert(pq[i-1].second);
+    }
+    x=min(left,right);
+    if(x==0)
+    {
+        ans=0;
+    }
+    else if(x==left)
+    {
+        for(i=0; i<n; i++)
+        {
+            s=pq[i].first;
+            if(s[0]=='1')
+            {
+                ans+=pq[i].second;
+                g=u.find(pq[i].second);
+                u.erase(g);
+                cou++;
+                if(s[1]=='1')
+                {
+                    f++;
+                    g=r.find(pq[i].second);
+                    r.erase(g);
+                }
+            }
+        }
+        if(r.size()>0)
+        {
+            g=r.end();
+            g--;
+        }
+        while(f!=x)
+        {
+            ans+=*g;
+            f++;
+            cou++;
+            o=u.find(*g);
+            u.erase(o);
+             g--;
+        }
+        if(u.size()>0)
+        {
+             g=u.end();
+             g--;
+        }
+        if(u.size()>0)
+        {
+             o=u.begin();
+        }
+        while(cou!=2*x&&u.size()>0)
+        {
+            ans+=*g;
+            cou++;
+            if(g==o)
+            {
+                break;
+            }
+            g--;
+        }
+    }
+    else
+    {
+        for(i=0; i<n; i++)
+        {
+            s=pq[i].first;
+            if(s[1]=='1')
+            {
+                ans+=pq[i].second;
+                g=u.find(pq[i].second);
+                u.erase(g);
+                cou++;
+                if(s[0]=='1')
+                {
+                    f++;
+                    g=p.find(pq[i].second);
+                    p.erase(g);
+                }
+            }
+        }
+        if(p.size()>0)
+        {
+            g=p.end();
+            g--;
+        }
+        while(f!=x)
+        {
+            ans+=*g;
+            f++;
+            cou++;
+            o=u.find(*g);
+            u.erase(o);
+            g--;
+        }
+         if(u.size()>0)
+        {
+             g=u.end();
+             g--;
+        }
+        if(u.size()>0)
+        {
+             o=u.begin();
+        }
+        while(cou!=2*x&&u.size()>0)
+        {
+            ans+=*g;
+            cou++;
+            if(g==o)
+            {
+                break;
+            }
+            g--;
+        }
+    }
+    cout<<ans<<"\n";
+
+}

@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    int n,i,j,f,temp,r,cou=0,fou=0;
+    cin>>n;
+    int ara[2*n],tak[2*n];
+    for(i=0;i<(2*n);i++)
+    {
+        cin>>ara[i];
+        tak[i]=ara[i];
+    }
+    for(i=0;i<(2*n);i+=2)
+    {
+        if(ara[i]!=ara[i+1])
+        {
+            for(j=i+1;j<(2*n);j++)
+            {
+                if(ara[j]==ara[i])
+                {
+                  f=j;
+                  break;
+                }
+            }
+            cou+=(f-i)-1;
+            for(j=f;j>i+1;j--)
+            {
+                ara[j]=ara[j-1];
+            }
+            ara[i+1]=ara[i];
+        }
+    }
+    for(i=(2*n)-1;i>=0;i-=2)
+    {
+        if(tak[i]!=tak[i-1])
+        {
+            for(j=i-1;j>=0;j--)
+            {
+                if(tak[j]==tak[i])
+                {
+                  f=j;
+                  break;
+                }
+            }
+            fou+=(i-f)-1;
+            for(j=f;j<i-1;j++)
+            {
+                tak[j]=tak[j+1];
+            }
+            tak[i-1]=tak[i];
+        }
+    }
+    cout<<min(cou,fou)<<endl;
+}

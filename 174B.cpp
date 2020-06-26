@@ -1,0 +1,100 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<string>v,ans;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    string s,c,r;
+    cin>>s;
+    long long int k,i,j,flag=0;
+    k=s.size();
+    for(i=0;i<k;i++)
+    {
+        if(s[i]!='.')
+        {
+            c+=s[i];
+        }
+        else
+        {
+            v.push_back(c);
+            c.clear();
+        }
+    }
+    v.push_back(c);
+    if(v.size()<2)
+    {
+        cout<<"NO\n";
+    }
+    else
+    {
+        if(v[0].size()==0||v[v.size()-1].size()>3||v[0].size()>8||v[v.size()-1].size()==0)
+        {
+            cout<<"NO\n";
+        }
+        else
+        {
+            for(i=0;i<v.size();i++)
+            {
+                if(i==0)
+                {
+                   r=v[i];
+                }
+                else if(i==v.size()-1)
+                {
+                    r+='.';
+                    r+=v[i];
+                    ans.push_back(r);
+                }
+                else
+                {
+                   if(v[i].size()>11||v[i].size()<=1)
+                   {
+                      flag=1;
+                      break;
+                   }
+                   else
+                   {
+                       if(v[i].size()<=3)
+                       {
+                          r+='.';
+                          r+=v[i][0];
+                          ans.push_back(r);
+                          r.clear();
+                          for(j=1;j<v[i].size();j++)
+                          {
+                              r+=v[i][j];
+                          }
+                       }
+                       else
+                       {
+                          r+='.';
+                          for(j=0;j<3;j++)
+                          {
+                              r+=v[i][j];
+                          }
+                          ans.push_back(r);
+                          r.clear();
+                          for(j=3;j<v[i].size();j++)
+                          {
+                              r+=v[i][j];
+                          }
+                       }
+                   }
+                }
+            }
+            if(flag)
+            {
+               cout<<"NO\n";
+            }
+            else
+            {
+                cout<<"YES\n";
+                for(i=0;i<ans.size();i++)
+                {
+                    cout<<ans[i]<<"\n";
+                }
+            }
+        }
+    }
+}

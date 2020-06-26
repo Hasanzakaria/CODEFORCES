@@ -1,0 +1,76 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int n,i,p=0,l=0,x=0,y=0,flag;
+    cin>>n;
+    string a;
+    cin>>a;
+    if(n%2==1)
+    {
+        cout<<":(\n";
+    }
+    else
+    {
+        for(i=0;i<n;i++)
+        {
+            if(a[i]=='(')
+            {
+                p++;
+            }
+            else if(a[i]==')')
+            {
+              l++;
+            }
+        }
+        if(p>(n/2)||l>(n/2))
+        {
+            cout<<":(\n";
+        }
+        else
+        {
+           flag=0;
+           for(i=0;i<n;i++)
+           {
+               if(a[i]=='(')
+               {
+                   x++;
+               }
+               else if(a[i]==')')
+               {
+                   y++;
+               }
+               else
+               {
+                   if(p<(n/2))
+                   {
+                       a[i]='(';
+                       p++;
+                       x++;
+                   }
+                   else
+                   {
+                       a[i]=')';
+                       l++;
+                       y++;
+                   }
+               }
+               if(y>x||(i!=n-1&&x==y))
+               {
+                  flag=1;
+                  break;
+               }
+           }
+           if(flag==1)
+           {
+             cout<<":(\n";
+           }
+           else
+           {
+             cout<<a<<"\n";
+           }
+        }
+    }
+}

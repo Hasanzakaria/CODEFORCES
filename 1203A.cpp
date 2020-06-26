@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int q,i,a,j,f,l,k,flag,flag1;
+    cin>>q;
+    for(i=1;i<=q;i++)
+    {
+        cin>>a;
+        flag=0;
+        flag1=0;
+        long long int ara[a];
+        for(j=0;j<a;j++)
+        {
+            cin>>ara[j];
+            if(ara[j]==1)
+            {
+                f=j;
+            }
+        }
+        l=f+1;
+        k=2;
+        for(j=2;j<=a;j++)
+        {
+            l=l%a;
+            if(ara[l]!=k)
+            {
+               flag=1;
+            }
+            k++;
+            l++;
+        }
+        l=f-1;
+        k=2;
+        for(j=2;j<=a;j++)
+        {
+            if(l==-1)
+            {
+                l=a-1;
+            }
+            if(ara[l]!=k)
+            {
+               flag1=1;
+            }
+            k++;
+            l--;
+        }
+        if(flag==0||flag1==0)
+        {
+            cout<<"YES\n";
+        }
+        else
+        {
+            cout<<"NO\n";
+        }
+    }
+}

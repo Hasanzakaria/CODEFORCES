@@ -1,0 +1,32 @@
+#include<stdio.h>
+int main ()
+{
+    int a,i,j,c[60],count=0,k;
+    scanf("%d",&a);
+    k=a*2;
+    for(i=0;i<k;i++)
+    {
+        scanf("%d",&c[i]);
+    }
+    for(i=0;i<k;i=i+2)
+    {
+        for(j=i+3;j<k;j=j+2)
+        {
+            if(c[i]==c[j])
+            {
+                count++;
+            }
+        }
+    }
+    for(i=1;i<k;i=i+2)
+    {
+        for(j=i+1;j<k;j=j+2)
+        {
+            if(c[i]==c[j])
+            {
+                count++;
+            }
+        }
+    }
+    printf("%d",count);
+}

@@ -1,0 +1,73 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int t,i,a,j,alice,bob,total,k,previous,sum,flag;
+    cin>>t;
+    for(i=1;i<=t;i++)
+    {
+        cin>>a;
+        alice=0;
+        bob=0;
+        total=0;
+        previous=0;
+        sum=0;
+        flag=0;
+        long long int ara[a];
+        for(j=0;j<a;j++)
+        {
+            cin>>ara[j];
+        }
+        j=0;
+        k=a-1;
+        while(j<=k)
+        {
+            if(flag==0)
+            {
+                sum+=ara[j];
+                j++;
+            }
+            else
+            {
+                sum+=ara[k];
+                k--;
+            }
+            if(sum>previous)
+            {
+                previous=sum;
+                if(flag==0)
+                {
+                    flag=1;
+                    alice+=sum;
+                }
+                else
+                {
+                    flag=0;
+                    bob+=sum;
+                }
+                sum=0;
+                total++;
+            }
+        }
+        if(flag==0)
+        {
+            if(sum>0)
+            {
+                total++;
+                alice+=sum;
+            }
+        }
+        if(flag==1)
+        {
+            if(sum>0)
+            {
+                total++;
+                bob+=sum;
+            }
+        }
+        cout<<total<<" "<<alice<<" "<<bob<<"\n";
+    }
+
+}

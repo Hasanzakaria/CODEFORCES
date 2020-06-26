@@ -1,0 +1,96 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long int ara[1000000];
+vector<long long int>v;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int a,b,c,d,i,k,flg=0;
+    cin>>a>>b>>c>>d;
+    memset(ara,-1,sizeof(ara));
+    for(i=1;;i+=2)
+    {
+        if(a>0)
+        {
+            ara[i]=0;
+            a--;
+        }
+        else if(c>0)
+        {
+            ara[i]=2;
+            c--;
+        }
+        else
+        {
+            k=i-2;
+            break;
+        }
+    }
+    for(i=k-1;i>0;i-=2)
+    {
+        if(d>0&&ara[i-1]==2)
+        {
+            ara[i]=3;
+            d--;
+        }
+        else if(b>0)
+        {
+            ara[i]=1;
+            b--;
+        }
+    }
+    if(b>0)
+    {
+        b--;
+        ara[0]=1;
+    }
+    if(b>0&&ara[k+1]==-1)
+    {
+        ara[k+1]=1;
+        b--;
+    }
+    if(d>0&&ara[1]!=0&&ara[0]==-1)
+    {
+        d--;
+        ara[0]=3;
+    }
+    if(d>0&&ara[k+1]==-1)
+    {
+        if(k>=0)
+        {
+            if(ara[k]==2)
+            {
+                d--;
+                ara[k+1]=3;
+            }
+        }
+    }
+    for(i=0;i<=k+1;i++)
+    {
+        if(ara[i]!=-1)
+        {
+            v.push_back(ara[i]);
+        }
+    }
+    for(i=0;i<v.size()-1;i++)
+    {
+        if(abs(v[i+1]-v[i])!=1)
+        {
+            flg=1;
+            break;
+        }
+    }
+    if(flg==0&&a==0&&b==0&&c==0&&d==0)
+    {
+        cout<<"YES\n";
+        for(i=0;i<v.size();i++)
+        {
+            cout<<v[i]<<" ";
+        }
+    }
+    else
+    {
+        cout<<"NO\n";
+    }
+}

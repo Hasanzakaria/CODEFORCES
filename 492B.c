@@ -1,0 +1,72 @@
+#include<stdio.h>
+int main ()
+{
+    int n,m,temp;
+    double k,a=0,l;
+    scanf("%d %d",&n,&m);
+    int ara[n],i,j;
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&ara[i]);
+    }
+    for(i=0;i<n-1;i++)
+    {
+        for(j=0;j<n-1;j++)
+        {
+            if(ara[j]>ara[j+1])
+            {
+                temp=ara[j];
+                ara[j]=ara[j+1];
+                ara[j+1]=temp;
+            }
+        }
+    }
+    for(i=0;i<n-1;i++)
+    {
+        if(ara[0]==0)
+        {
+           k=ara[i+1]-ara[i];
+           k=k/2;
+           if(k>a)
+           {
+               a=k;
+           }
+        }
+        else
+        {
+            k=ara[0]-0;
+            if(k>a)
+            {
+                a=k;
+            }
+            k=ara[i+1]-ara[i];
+            k=k/2;
+            if(k>a)
+            {
+                a=k;
+            }
+        }
+    }
+    if(ara[n-1]!=m)
+    {
+        k=m-ara[n-1];
+        if(k>a)
+        {
+            a=k;
+        }
+    }
+    if(n==1)
+    {
+        k=m-ara[n-1];
+        l=ara[n-1]-0;
+        if(k>l)
+        {
+            a=k;
+        }
+        else
+        {
+            a=l;
+        }
+    }
+    printf("%lf",a);
+}

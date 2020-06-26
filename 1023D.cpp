@@ -1,0 +1,84 @@
+#include<bits/stdc++.h>
+using namespace std;
+map<int,int>mp;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    long long int n,m,i,k,r=1000000,flag=0,g=0,f,t=0;
+    cin>>n>>m;
+    long long int ara[n];
+    for(i=0;i<n;i++)
+    {
+        cin>>ara[i];
+        if(ara[i]==0)
+        {
+            f=i;
+        }
+        else if(ara[i]==m)
+        {
+          t=1;
+        }
+    }
+    k=m;
+    if(t==0)
+    {
+        ara[f]=m;
+    }
+    else
+    {
+        f=-1;
+    }
+    for(i=0;i<n;i++)
+    {
+        if(i==f)
+        {
+            continue;
+        }
+        if(ara[i]!=0)
+        {
+            k=ara[i];
+        }
+        else
+        {
+            ara[i]=k;
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+        r=min(r,ara[i]);
+        if(r!=ara[i])
+        {
+            if(mp[ara[i]]==1)
+            {
+              flag=1;
+              break;
+            }
+        }
+        mp[ara[i]]=1;
+        r=ara[i];
+    }
+    for(i=0;i<n;i++)
+    {
+        if(ara[i]==m)
+        {
+           g=1;
+           break;
+        }
+    }
+    if(g==0)
+    {
+        flag=1;
+    }
+    if(flag==1)
+    {
+        cout<<"NO"<<endl;
+    }
+    else
+    {
+        cout<<"YES"<<endl;
+        for(i=0;i<n;i++)
+        {
+            cout<<ara[i]<<" ";
+        }
+    }
+}

@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int n,m,i,t,x,y,r,j,ans=1e9+100;
+    cin>>n>>m;
+    long long int ara[n],jak[n],fak[n],flag;
+    for(i=0;i<n;i++)
+    {
+        cin>>ara[i];
+    }
+    for(i=0;i<n;i++)
+    {
+        cin>>jak[i];
+    }
+    sort(ara,ara+n);
+    sort(jak,jak+n);
+    for(i=0;i<n;i++)
+    {
+        flag=0;
+        x=jak[i];
+        y=ara[0];
+        if(x>=y)
+        {
+            r=x-y;
+        }
+        else
+        {
+            r=m-y+x;
+        }
+        for(j=0;j<n;j++)
+        {
+            fak[j]=(ara[j]+r)%m;
+        }
+        sort(fak,fak+n);
+        for(j=0;j<n;j++)
+        {
+            if(fak[j]!=jak[j])
+            {
+               flag=1;
+               break;
+            }
+        }
+        if(flag==0)
+        {
+            ans=min(ans,r);
+        }
+    }
+    cout<<ans<<endl;
+}

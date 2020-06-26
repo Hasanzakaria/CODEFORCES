@@ -1,0 +1,108 @@
+#include<iostream>
+using namespace std;
+int main ()
+{
+   int a,b,c,d,k,flag=0,r,t=0,i,g,tt,cou=1,ll=0,y=0;
+   cin>>a>>b>>c>>d;
+   char jak[a+1];
+   k=min(c,d);
+   if(k==c)
+   {
+       flag=1;
+   }
+   else
+   {
+       flag=2;
+   }
+   if(k!=0)
+   {
+     r=a/k;
+   }
+   else
+   {
+       r=0;
+   }
+   tt=r-1;
+   for(i=tt;i<a&&i>=0;i+=r)
+   {
+       if(flag==1)
+       {
+           jak[i]='G';
+           t=1;
+           y++;
+           if(y==k)
+           {
+               break;
+           }
+       }
+       else
+       {
+           jak[i]='B';
+           t=2;
+           y++;
+           if(y==k)
+           {
+               break;
+           }
+       }
+   }
+   for(i=0;i<a;i++)
+   {
+       if(t==1&&jak[i]!='G')
+       {
+           jak[i]='B';
+       }
+       else if(t==2&&jak[i]!='B')
+       {
+           jak[i]='G';
+       }
+   }
+   if(t==0)
+   {
+       if(c>d)
+       {
+           for(i=0;i<a;i++)
+           {
+               jak[i]='G';
+           }
+       }
+       else
+       {
+           for(i=0;i<a;i++)
+           {
+               jak[i]='B';
+           }
+       }
+   }
+   jak[a]='\0';
+   for(i=0;i<a-1;i++)
+   {
+       if(jak[i]==jak[i+1])
+       {
+           cou++;
+       }
+       else
+       {
+           if(cou>b)
+           {
+              ll=1;
+           }
+           cou=1;
+       }
+   }
+   if(cou>b)
+   {
+       ll=1;
+   }
+   if(ll==0)
+   {
+       cout<<jak;
+   }
+   else
+   {
+       cout<<"NO";
+   }
+
+
+
+}

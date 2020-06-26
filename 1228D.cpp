@@ -1,0 +1,116 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<long long int>edge[100001];
+bool vis[100001];
+vector<long long int>v[3];
+map<long long int,long long int>mp,cp[100001];
+long long int ans[100001];
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int n,r,i,x,y,cou=0,j,flag=0;
+    cin>>n>>r;
+    for(i=1;i<=r;i++)
+    {
+        cin>>x>>y;
+        cp[x][y]=1;
+        cp[y][x]=1;
+        edge[x].push_back(y);
+        edge[y].push_back(x);
+    }
+    for(i=1;i<=n;i++)
+    {
+       if(vis[i]==0)
+       {
+           vis[i]=1;
+           for(j=0;j<edge[i].size();j++)
+           {
+               mp[edge[i][j]]=1;
+           }
+           for(j=1;j<=n;j++)
+           {
+               if(mp[j]==0)
+               {
+                   if(vis[j]==0)
+                   {
+                       v[cou].push_back(j);
+                       vis[j]=1;
+                   }
+               }
+           }
+           v[cou].push_back(i);
+           cou++;
+           if(cou==3)
+           {
+               break;
+           }
+           mp.clear();
+       }
+    }
+    if(cou==3&&v[0].size()+v[1].size()+v[2].size()==n)
+    {
+       if(r==(v[0].size()*v[1].size())+(v[1].size()*v[2].size())+(v[2].size()*v[0].size()))
+       {
+           for(i=0;i<v[0].size();i++)
+           {
+               for(j=0;j<v[1].size();j++)
+               {
+                   if(cp[v[0][i]][v[1][j]]==0)
+                   {
+                      flag=1;
+                   }
+               }
+               for(j=0;j<v[2].size();j++)
+               {
+                   if(cp[v[0][i]][v[2][j]]==0)
+                   {
+                      flag=1;
+                   }
+               }
+
+           }
+           for(i=0;i<v[1].size();i++)
+           {
+               for(j=0;j<v[2].size();j++)
+               {
+                   if(cp[v[1][i]][v[2][j]]==0)
+                   {
+                      flag=1;
+                   }
+               }
+           }
+           if(flag)
+           {
+               cout<<-1<<"\n";
+           }
+           else
+           {
+               for(i=0;i<v[0].size();i++)
+               {
+                  ans[v[0][i]]=1;
+               }
+               for(i=0;i<v[1].size();i++)
+               {
+                  ans[v[1][i]]=2;
+               }
+               for(i=0;i<v[2].size();i++)
+               {
+                  ans[v[2][i]]=3;
+               }
+               for(i=1;i<=n;i++)
+               {
+                   cout<<ans[i]<<" ";
+               }
+           }
+       }
+       else
+       {
+           cout<<-1<<"\n";
+       }
+    }
+    else
+    {
+        cout<<-1<<"\n";
+    }
+}

@@ -1,0 +1,74 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<long long int>v,r;
+vector<long long int>::iterator l;
+map<long long int,long long int>mp;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int q,i,a,j,ans,c,u;
+    cin>>q;
+    for(i=1;i<=q;i++)
+    {
+        ans=0;
+        cin>>a;
+        for(j=0;j<a;j++)
+        {
+            cin>>c;
+            v.push_back(c);
+        }
+        sort(v.begin(),v.end());
+        while(1)
+        {
+            for(l=v.begin();l!=v.end();l++)
+            {
+               if(*l==2048)
+               {
+                   ans=1;
+                   break;
+               }
+               mp[*l]++;
+               if(mp[*l]==2)
+               {
+                   u=2*(*l);
+                   r.push_back(u);
+                   mp[*l]=0;
+               }
+            }
+            if(ans==1)
+            {
+                break;
+            }
+            for(l=v.begin();l!=v.end();l++)
+            {
+               if(mp[*l]==1)
+               {
+                   mp[*l]=0;
+                   r.push_back(*l);
+               }
+            }
+            if(v.size()==r.size())
+            {
+                break;
+            }
+            else
+            {
+                v=r;
+                r.clear();
+            }
+            mp.clear();
+        }
+        if(ans==1)
+        {
+            cout<<"YES\n";
+        }
+        else
+        {
+            cout<<"NO\n";
+        }
+        v.clear();
+        r.clear();
+        mp.clear();
+    }
+}

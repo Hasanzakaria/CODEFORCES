@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int n,i,a,j,k,r,t,cou,flag;
+    string s;
+    cin>>n;
+    for(i=1;i<=n;i++)
+    {
+       cin>>a;
+       flag=0;
+       cou=0;
+       for(j=1;j<=a;j++)
+       {
+           cin>>s;
+           k=s.size();
+           if(k%2!=0)
+           {
+               flag=1;
+           }
+           r=0;
+           t=k-1;
+           while(r<=t)
+           {
+               if(s[r]!=s[t])
+               {
+                  cou++;
+               }
+               r++;
+               t--;
+           }
+       }
+       if(cou%2==0)
+       {
+           cout<<a<<"\n";
+       }
+       else
+       {
+           if(flag)
+           {
+               cout<<a<<"\n";
+           }
+           else
+           {
+               cout<<a-1<<"\n";
+           }
+       }
+    }
+}

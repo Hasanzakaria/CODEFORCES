@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int t,i,a,j,k,row,col,flag;
+    cin>>t;
+    for(i=1;i<=t;i++)
+    {
+        cin>>a;
+        row=0;
+        col=0;
+        flag=0;
+        char jak[2][a];
+        for(j=0;j<2;j++)
+        {
+            for(k=0;k<a;k++)
+            {
+                cin>>jak[j][k];
+            }
+        }
+        while(1)
+        {
+            if(col==a)
+            {
+                break;
+            }
+            if(jak[row][col]=='1'||jak[row][col]=='2')
+            {
+                col++;
+            }
+            else
+            {
+                row++;
+                row%=2;
+                if(jak[row][col]=='1'||jak[row][col]=='2')
+                {
+                  flag=1;
+                  break;
+                }
+                else
+                {
+                    col++;
+                }
+            }
+        }
+        if(row==1&&flag==0)
+        {
+            cout<<"YES\n";
+        }
+        else
+        {
+            cout<<"NO\n";
+        }
+    }
+}

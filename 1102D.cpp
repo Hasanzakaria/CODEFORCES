@@ -1,0 +1,93 @@
+#include<bits/stdc++.h>
+using namespace std;
+int ara[3];
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int n,i,k,l,cou=0;
+    cin>>n;
+    string a;
+    cin>>a;
+    l=n/3;
+    for(i=0;i<n;i++)
+    {
+        k=a[i]-48;
+        ara[k]++;
+    }
+    for(i=0;i<n;i++)
+    {
+        if(a[i]=='0')
+        {
+            if(cou==l)
+            {
+                if(ara[1]<l)
+                {
+                    a[i]='1';
+                    ara[1]++;
+                    ara[0]--;
+                }
+                else if(ara[2]<l)
+                {
+                    a[i]='2';
+                    ara[2]++;
+                    ara[0]--;
+                }
+                continue;
+            }
+            cou++;
+        }
+    }
+    cou=0;
+    for(i=0;i<n;i++)
+    {
+       if(a[i]=='1')
+       {
+           if(cou==l)
+           {
+               if(ara[2]<l)
+               {
+                   ara[2]++;
+                   ara[1]--;
+                   a[i]='2';
+               }
+               continue;
+           }
+           if(ara[1]>l)
+           {
+               if(ara[0]<l)
+               {
+                   ara[0]++;
+                   ara[1]--;
+                   a[i]='0';
+               }
+               else
+               {
+                   cou++;
+               }
+           }
+       }
+    }
+    for(i=0;i<n;i++)
+    {
+        if(a[i]=='2')
+        {
+            if(ara[2]>l)
+            {
+                if(ara[0]<l)
+                {
+                    ara[2]--;
+                    ara[0]++;
+                    a[i]='0';
+                }
+                else if(ara[1]<l)
+                {
+                    ara[1]++;
+                    ara[2]--;
+                    a[i]='1';
+                }
+            }
+        }
+    }
+    cout<<a<<"\n";
+}

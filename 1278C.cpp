@@ -1,0 +1,79 @@
+#include<bits/stdc++.h>
+using namespace std;
+map<long long int,long long int>mp;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int t,i,n,j,a,b,r,f,ans;
+    cin>>t;
+    for(i=1;i<=t;i++)
+    {
+        ans=-1;
+        cin>>n;
+        a=0;
+        b=0;
+        r=1;
+        long long int ara[n],jak[n];
+        for(j=0;j<n;j++)
+        {
+            cin>>ara[j];
+        }
+        for(j=0;j<n;j++)
+        {
+            cin>>jak[j];
+        }
+        for(j=n-1;j>=0;j--)
+        {
+            if(jak[j]==1)
+            {
+                a++;
+            }
+            else
+            {
+                b++;
+            }
+            mp[a-b]=r;
+            r++;
+        }
+        a=0;
+        b=0;
+        if(mp[0]!=0)
+        {
+            ans=mp[0];
+        }
+        for(j=0;j<n;j++)
+        {
+            if(ara[j]==1)
+            {
+                a++;
+            }
+            else
+            {
+                b++;
+            }
+            f=-(a-b);
+            if(mp[f]!=0)
+            {
+               ans=max(ans,j+1+mp[f]);
+            }
+            else
+            {
+                if(a==b)
+                {
+                    ans=max(ans,j+1);
+                }
+            }
+        }
+        if(ans==-1)
+        {
+            cout<<2*n<<"\n";
+        }
+        else
+        {
+            cout<<(2*n)-ans<<"\n";
+        }
+        mp.clear();
+    }
+
+}

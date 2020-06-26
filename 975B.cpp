@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+  ios_base::sync_with_stdio(0);
+  long long int ara[14],i,tak[14],l,j,m,n,cou,t=0,f;
+  for(i=0;i<14;i++)
+  {
+      cin>>ara[i];
+      tak[i]=ara[i];
+  }
+  for(i=0;i<14;i++)
+  {
+      cou=0;
+      if(ara[i]>0)
+      {
+          l=ara[i];
+          tak[i]=0;
+          for(j=i+1;j<14;j++)
+          {
+              if(l==0)
+              {
+                  break;
+              }
+              tak[j]++;
+              l--;
+          }
+          if(l>0)
+          {
+              m=l/14;
+              for(j=0;j<14;j++)
+              {
+                  tak[j]+=m;
+              }
+              n=l%14;
+              for(j=0;j<n;j++)
+              {
+                  tak[j]++;
+              }
+          }
+          for(j=0;j<14;j++)
+          {
+              if(tak[j]%2==0)
+              {
+                 cou+=tak[j];
+              }
+          }
+          for(j=0;j<14;j++)
+          {
+              tak[j]=ara[j];
+          }
+      }
+      t=max(t,cou);
+  }
+  cout<<t<<endl;
+}

@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<string>v,ans;
+map<string,long long int>mp;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int tt,i,a,j,k,l,anss,flag;
+    string c,r,t;
+    cin>>tt;
+    for(i=1;i<=tt;i++)
+    {
+        anss=0;
+        cin>>a;
+        for(j=1;j<=a;j++)
+        {
+            cin>>c;
+            v.push_back(c);
+            mp[c]++;
+        }
+        for(j=0;j<v.size();j++)
+        {
+           r=v[j];
+           flag=0;
+           if(mp[r]>1)
+           {
+              for(k=0;k<4;k++)
+              {
+                  t=r;
+                  for(l=48;l<=48+9;l++)
+                  {
+                      t[k]=l;
+                      if(mp[t]==0)
+                      {
+                          mp[t]=1;
+                          anss++;
+                          flag=1;
+                          mp[r]--;
+                          break;
+                      }
+                  }
+                  if(flag==1)
+                  {
+                      break;
+                  }
+              }
+              ans.push_back(t);
+           }
+           else
+           {
+             ans.push_back(r);
+           }
+        }
+        cout<<anss<<"\n";
+        for(j=0;j<ans.size();j++)
+        {
+            cout<<ans[j]<<"\n";
+        }
+        ans.clear();
+        v.clear();
+        mp.clear();
+    }
+}

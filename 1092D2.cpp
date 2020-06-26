@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    stack<int>s;
+    int n,i,a,l,flg=0,maxx=-1;
+    cin>>n;
+    for(i=1;i<=n;i++)
+    {
+        cin>>a;
+        maxx=max(a,maxx);
+        if(s.size()>0)
+        {
+            l=s.top();
+            if(l==a)
+            {
+                s.pop();
+                continue;
+            }
+            else if(a>l)
+            {
+                flg=1;
+            }
+        }
+        s.push(a);
+    }
+    if(s.size()<=1&&flg==0)
+    {
+        if(s.size()==0)
+        {
+            cout<<"YES\n";
+        }
+        else
+        {
+            l=s.top();
+            if(l==maxx)
+            {
+                cout<<"YES\n";
+            }
+            else
+            {
+                cout<<"NO\n";
+            }
+        }
+    }
+    else
+    {
+        cout<<"NO\n";
+    }
+}

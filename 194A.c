@@ -1,0 +1,84 @@
+#include<stdio.h>
+int main ()
+{
+    int a,b,t,i,k,f=0,n=50,count=0,r,j,m,na,x,y,z,s;
+    scanf("%d %d",&a,&b);
+    t=b/5;
+    for(i=t;i>=0;i--)
+    {
+       k=b-(5*i);
+       if(k==0)
+       {
+          count=count+i;
+          if(count==a)
+          {
+              if(f<n)
+              {
+                  n=f;
+              }
+          }
+          count=0;
+       }
+       else
+       {
+          r=k/4;
+          for(j=r;j>=0;j--)
+          {
+             m=k-(4*j);
+             if(m==0)
+             {
+                 count=count+i+j;
+                 if(count==a)
+                 {
+                     if(f<n)
+                     {
+                         n=f;
+                     }
+                 }
+                 count=0;
+             }
+             else
+             {
+                 na=m/3;
+                 for(x=na;x>=0;x--)
+                 {
+                     y=m-(3*x);
+                     if(y==0)
+                     {
+                         count=count+i+j+x;
+                         if(count==a)
+                         {
+                             if(f<n)
+                             {
+                                 n=f;
+                             }
+                         }
+                         count=0;
+                     }
+                     else
+                     {
+                        if(y%2==0)
+                        {
+                            z=y/2;
+                            f=z;
+                            count=count+i+j+x+z;
+                            if(count==a)
+                            {
+                                if(f<n)
+                                {
+                                    n=f;
+                                }
+                            }
+                            count=0;
+                            f=0;
+
+                        }
+                     }
+
+                 }
+             }
+          }
+       }
+    }
+    printf("%d",n);
+}

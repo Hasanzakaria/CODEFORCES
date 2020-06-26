@@ -1,0 +1,65 @@
+#include<stdio.h>
+int main ()
+{
+    int a,b,i,c,j,p,sum=0;
+    scanf("%d %d",&a,&b);
+    for(i=a;i<=b;i++)
+    {
+        for(c=i;c%10!=0||c/10!=0;c=c/10)
+        {
+           j=c%10;
+           if(j==0)
+           {
+                p=6;
+                sum=sum+p;
+           }
+           else if(j==1)
+           {
+                p=2;
+                sum=sum+p;
+           }
+           if(j==2)
+           {
+                p=5;
+                sum=sum+p;
+           }
+           if(j==3)
+           {
+                p=5;
+                sum=sum+p;
+           }
+           if(j==4)
+           {
+                p=4;
+                sum=sum+p;
+           }
+           if(j==5)
+           {
+                p=5;
+                sum=sum+p;
+           }
+           if(j==6)
+           {
+                p=6;
+                sum=sum+p;
+           }
+           if(j==7)
+           {
+                p=3;
+                sum=sum+p;
+           }
+           if(j==8)
+           {
+                p=7;
+                sum=sum+p;
+           }
+           if(j==9)
+           {
+                p=6;
+                sum=sum+p;
+           }
+        }
+    }
+    printf("%d\n",sum);
+
+}

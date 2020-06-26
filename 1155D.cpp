@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int n,m,i,sum=0,maxx=0,left=0,right=-1;
+    cin>>n>>m;
+    long long int ara[n],tak[n];
+    for(i=0;i<n;i++)
+    {
+        cin>>ara[i];
+        tak[i]=-ara[i];
+    }
+    if(m>=0)
+    {
+        for(i=0;i<n;i++)
+        {
+            sum+=ara[i];
+            if(sum<0)
+            {
+                sum=0;
+            }
+            maxx=max(maxx,sum);
+        }
+        cout<<maxx*m<<"\n";
+    }
+    else
+    {
+      for(i=0;i<n;i++)
+      {
+         sum+=tak[i];
+         if(sum<0)
+         {
+             sum=0;
+             left=i+1;
+         }
+         if(sum>maxx)
+         {
+             maxx=sum;
+             right=i;
+         }
+      }
+      for(i=0;i<n;i++)
+      {
+          if(i>=left&&i<=right)
+          {
+              ara[i]*=m;
+          }
+      }
+      sum=0;
+      maxx=0;
+      for(i=0;i<n;i++)
+      {
+          sum+=ara[i];
+          if(sum<0)
+          {
+              sum=0;
+          }
+          maxx=max(sum,maxx);
+      }
+      cout<<maxx<<"\n";
+    }
+}

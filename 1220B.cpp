@@ -1,0 +1,73 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<long long int>v,u;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int n,i,j,k=0,t,l,f,flag;
+    cin>>n;
+    long long int ara[n][n];
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            cin>>ara[i][j];
+        }
+    }
+    for(i=1;i<n;i++)
+    {
+        k=__gcd(k,ara[0][i]);
+    }
+    t=sqrt(k);
+    for(i=1;i<=t;i++)
+    {
+        if(k%i==0)
+        {
+           l=k/i;
+           if(l==i)
+           {
+               v.push_back(i);
+           }
+           else
+           {
+             v.push_back(i);
+             v.push_back(l);
+           }
+        }
+    }
+    for(i=0;i<v.size();i++)
+    {
+       u.push_back(v[i]);
+       for(j=1;j<n;j++)
+       {
+          l=ara[0][j]/v[i];
+          u.push_back(l);
+       }
+       flag=0;
+       for(j=0;j<n;j++)
+       {
+           for(f=0;f<n;f++)
+           {
+               if(j==f)
+               {
+                   continue;
+               }
+               if(ara[j][f]!=u[j]*u[f])
+               {
+                  flag=1;
+                  break;
+               }
+           }
+       }
+       if(flag==0)
+       {
+           break;
+       }
+       u.clear();
+    }
+    for(i=0;i<u.size();i++)
+    {
+        cout<<u[i]<<" ";
+    }
+}

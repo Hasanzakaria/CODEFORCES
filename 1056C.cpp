@@ -1,0 +1,107 @@
+#include<bits/stdc++.h>
+using namespace std;
+map<long long int,long long int>mp,cp,rp;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int n,m,i,tt,x,y,t,u,j;
+    cin>>n>>m;
+    pair<long long int,long long int>ara[2*n];
+    for(i=0;i<2*n;i++)
+    {
+        cin>>ara[i].first;
+        ara[i].second=i+1;
+        mp[i+1]=ara[i].first;
+    }
+    sort(ara,ara+(2*n));
+    pair<long long int,long long int>pq[m];
+    for(i=0;i<m;i++)
+    {
+        cin>>pq[i].first>>pq[i].second;
+         x=pq[i].first;
+         y=pq[i].second;
+         rp[x]=y;
+         rp[y]=x;
+    }
+    cin>>tt;
+    if(tt==1)
+    {
+        for(i=0;i<m;i++)
+        {
+            x=pq[i].first;
+            y=pq[i].second;
+            if(mp[x]>mp[y])
+            {
+                cout<<x<<endl;
+                cp[x]=1;
+            }
+            else
+            {
+                cout<<y<<endl;
+                cp[y]=1;
+            }
+            cin>>t;
+            cp[t]=1;
+        }
+        for(i=(2*n)-1;i>=0;i--)
+        {
+            u=ara[i].second;
+            if(cp[u]==0)
+            {
+                cout<<u<<endl;
+                cp[u]=1;
+                cin>>t;
+                cp[t]=1;
+            }
+        }
+    }
+    else
+    {
+      for(i=1;i<=n;i++)
+      {
+          cin>>t;
+          cp[t]=1;
+          if(rp[t]!=0)
+          {
+              cout<<rp[t]<<endl;
+              cp[rp[t]]=1;
+          }
+          else
+          {
+              for(j=0;j<m;j++)
+              {
+                 x=pq[j].first;
+                 y=pq[j].second;
+                 if(cp[x]==0)
+                 {
+                     if(mp[x]>mp[y])
+                     {
+                         cout<<x<<endl;
+                         cp[x]=1;
+                         i++;
+                     }
+                     else
+                     {
+                         cout<<y<<endl;
+                         cp[y]=1;
+                         i++;
+                     }
+                     cin>>t;
+                     cp[t]=1;
+                 }
+              }
+              for(j=(2*n)-1;j>=0;j--)
+              {
+                 u=ara[j].second;
+                 if(cp[u]==0)
+                 {
+                     cout<<u<<endl;
+                     cp[u]=1;
+                     break;
+                 }
+              }
+          }
+      }
+    }
+}

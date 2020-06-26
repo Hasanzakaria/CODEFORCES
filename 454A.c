@@ -1,0 +1,43 @@
+#include<stdio.h>
+int main ()
+{
+    int n,i,c,j,k,l,m;
+    scanf("%d",&n);
+    c=(n/2)+1;
+    for(i=1;i<=c;i++)
+    {
+        for(j=c-i;j>0;j--)
+        {
+            printf("*");
+        }
+        for(k=2*i-1;k>0;k--)
+        {
+            printf("D");
+        }
+        for(l=c-i;l>0;l--)
+        {
+            printf("*");
+        }
+        printf("\n");
+    }
+    for(i=c,m=c;i<=n,m>0;i++,m--)
+    {
+        if(i==c&&m==c)
+        {
+            continue;
+        }
+        for(j=i-c;j>0;j--)
+        {
+            printf("*");
+        }
+        for(k=2*m-1;k>0;k--)
+        {
+            printf("D");
+        }
+        for(l=i-c;l>0;l--)
+        {
+            printf("*");
+        }
+        printf("\n");
+    }
+}

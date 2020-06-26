@@ -1,0 +1,84 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main ()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    long long int tt,i,a,b,c,d,j,sum,k,easy,hard,ans,t,f;
+    cin>>tt;
+    for(i=1;i<=tt;i++)
+    {
+        sum=0;
+        easy=0;
+        hard=0;
+        ans=0;
+        cin>>a>>b>>c>>d;
+        pair<long long int,long long int>pq[a];
+        for(j=0;j<a;j++)
+        {
+            cin>>pq[j].second;
+            if(pq[j].second==0)
+            {
+                easy++;
+            }
+            else
+            {
+                hard++;
+            }
+        }
+        for(j=0;j<a;j++)
+        {
+            cin>>pq[j].first;
+        }
+        sort(pq,pq+a);
+        for(j=0;j<a;j++)
+        {
+            if(sum<pq[j].first)
+            {
+                k=pq[j].first-sum-1;
+                t=j;
+                f=k/c;
+                if(easy<=f)
+                {
+                    t+=easy;
+                    k-=(easy*c);
+                }
+                else
+                {
+                    t+=f;
+                    k-=(f*c);
+                }
+                f=k/d;
+                if(hard<=f)
+                {
+                   t+=hard;
+                    k-=(hard*d);
+                }
+                else
+                {
+                    t+=f;
+                    k-=(f*d);
+                }
+                ans=max(ans,t);
+
+            }
+            if(pq[j].second==0)
+            {
+                sum+=c;
+                easy--;
+            }
+            else
+            {
+                sum+=d;
+                hard--;
+            }
+        }
+        if(sum<=b)
+        {
+            t=a;
+            ans=max(ans,t);
+        }
+        cout<<ans<<"\n";
+    }
+
+}
